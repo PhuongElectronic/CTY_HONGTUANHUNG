@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TÔN VINH VẺ ĐẸP NGÔI NHÀ BẠN</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#fcf9f9;
+}
+
+/* ================= HEADER ================= */
+
+.hero{
+    position:relative;
+    height:450px;
+    background:url("PRODUCT IMAGES/background.png") center center/cover no-repeat;
+}
+
+.hero-overlay{
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.25);
+}
+
+.logo-area{
+    position:absolute;
+    top:15px;
+    left:70px;
+    display: flex;
+    flex-direction: column; /* Ép logo và chữ xếp thành hàng dọc */
+    align-items: center;    /* Căn cho logo và chữ luôn luôn nằm chính giữa tâm của nhau */
+    gap: 7px;
+}
+
+.logo{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #972222;     /* Giữ làm màu nền dự phòng khi ảnh lỗi */
+    border: 3px solid #fff;
+    overflow: hidden;        /* TUYỆT CHIÊU: Cắt bỏ tất cả các góc ảnh bị tràn ra ngoài vòng tròn */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* Giúp ảnh tự co giãn vừa vặn với vòng tròn mà không bị méo tỉ lệ */
+}
+.company-name{
+    color:#e40f0fe1;
+    font-weight:bold;
+    margin-top:10px;
+    font-size:30px;
+}
+
+.navbar{
+    position:absolute;
+    top:70px;
+    right:20px;
+    background:#413e3e;
+    display:flex;
+}
+
+.navbar a{
+    color:#00ffff;
+    text-decoration:none;
+    padding:15px 20px;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    background:#c72a2a;
+}
+
+.hero-title{
+    position:absolute;
+    left:150px;
+    bottom:100px;
+    font-size:64px;
+    font-weight:bold;
+}
+
+/* ================= ABOUT ================= */
+
+.about-wrapper{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+    display:flex;
+    gap:20px;
+}
+
+.about-left{
+    flex:2;
+}
+
+.about-title{
+    background:#e8c9a8;
+    border:2px solid #444;
+    text-align:center;
+    padding:15px;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.about-box{
+    margin-top:10px;
+    padding:25px;
+    border-radius:20px;
+    color:white;
+    font-size:22px;
+    line-height:1.7;
+    background:linear-gradient(#4f88c6,#de5d5d);
+    text-align: justify;
+}
+
+.highlight{
+    color:#bbe20b;
+    font-weight:bold;
+}
+
+.gallery{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.gallery img{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    border-radius:8px;
+    background:#df1212;
+}
+
+.sidebar{
+    flex:1;
+}
+
+.related{
+    background:#efe19a;
+    border:2px solid #555;
+    border-radius:25px;
+    padding:30px;
+    min-height:300px;
+}
+
+.related h3{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.related ul{
+    padding-left:20px;
+}
+
+.related li{
+    margin-bottom:20px;
+}
+
+.contact-form{
+    margin-top:20px;
+    background:#4d8a87;
+    border-radius:20px;
+    padding:20px;
+    color:white;
+}
+
+.contact-form h3{
+    text-align:center;
+    color:black;
+    margin-bottom:20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+}
+
+.contact-form button{
+    background:#4a90e2;
+    color:white;
+    border:none;
+    padding:12px 28px;
+    cursor:pointer;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products{
+    background:#dcd5eb;
+    padding:50px 20px;
+}
+
+.products h2{
+    text-align:center;
+    color:#315f19;
+    margin-bottom:40px;
+    font-size:42px;
+}
+
+.product-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+}
+
+.product{
+    text-align:center;
+}
+
+.product img{
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    object-fit:cover;
+    background:#ccc;
+}
+
+.product h3{
+    margin:20px 0;
+    font-size:32px;
+}
+
+.product button{
+    background:#4d8a87;
+    color:white;
+    border:none;
+    padding:12px 40px;
+    font-weight:bold;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    background:#d6dbe1;
+    padding:50px 20px;
+}
+
+.footer-content{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.contact-info{
+    flex:1;
+}
+
+.contact-info p{
+    margin-bottom:25px;
+    font-size:24px;
+}
+
+.map{
+    flex:1;
+}
+
+.map iframe{
+    width:100%;
+    height:400px;
+    border:none;
+}
+
+.credit{
+    margin-top:40px;
+    font-size:22px;
+}
+
+/* ================= FLOAT ICONS FB VÀ ZALO================= */
+
+.floating-icons{
+    position:fixed;
+    right:20px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.floating-icons a{
+    display:block;
+    width:60px;
+    height:60px;
+    margin:15px 0;
+    border-radius:50%;
+    background:white;
+    text-align:center;
+    line-height:60px;
+    text-decoration:none;
+    font-size:24px;
+}
+
+/* Khung chứa cố định ở góc dưới bên phải màn hình */
+.floating-icons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 9999;
+}
+
+/* Cấu hình chung cho cả 2 nút tròn bằng nhau */
+.floating-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+    background-color: #ffffff;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+/* Định dạng ảnh bên trong */
+.floating-icons a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Khi khách di chuột vào nút sẽ dừng rung và phóng to lên tạo cảm giác chủ động */
+.floating-icons a:hover {
+    animation-play-state: paused; /* Tạm dừng rung khi di chuột vào */
+    transform: scale(1.15) !important;
+}
+
+/* --- HIỆU ỨNG RUNG LẮC (SHAKE ANIMATION) --- */
+.icon-shake {
+    /* Chạy hiệu ứng rung liên tục, lặp vô hạn */
+    animation: shakeEffect 0.8s infinite ease-in-out; 
+}
+
+@keyframes shakeEffect {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(0px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(2px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(2px, 2px) rotate(0deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Bạn vẫn có thể giữ nguyên hiệu ứng đổ bóng tỏa sóng màu sắc riêng cho từng nút */
+.fb-button {
+    box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.5);
+    animation: shakeEffect 0.8s infinite ease-in-out, fbGlow 1.8s infinite ease-in-out;
+}
+.zalo-button {
+    box-shadow: 0 0 0 0 rgba(0, 104, 224, 0.5);
+    animation: shakeEffect 0.8s infinite ease-in-out, zaloGlow 1.8s infinite ease-in-out;
+}
+
+@keyframes fbGlow {
+    0%, 100% { box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 0 0 0 rgba(26, 115, 232, 0.6); }
+    50% { box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 0 0 12px rgba(26, 115, 232, 0); }
+}
+@keyframes zaloGlow {
+    0%, 100% { box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 0 0 0 rgba(0, 104, 224, 0.6); }
+    50% { box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 0 0 12px rgba(0, 104, 224, 0); }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+.hero{
+    height:650px;
+}
+
+.hero-title{
+    font-size:34px;
+    left:20px;
+    right:20px;
+}
+
+.about-wrapper{
+    flex-direction:column;
+}
+
+.product-grid{
+    grid-template-columns:1fr;
+}
+
+.footer-content{
+    flex-direction:column;
+}
+
+.navbar{
+    flex-wrap:wrap;
+    position:static;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+<div class="hero-overlay"></div>
+
+<div class="logo-area">
+    <div class="logo">
+        <img src="PRODUCT IMAGES/LOGO.jpg" alt="Logo Hồng Tuấn Hùng">
+    </div>
+    <div class="company-name">HỒNG TUẤN HÙNG</div>
+</div>
+
+<div class="social-top">
+    <div>f</div>
+    <div>@</div>
+    <div>Z</div>
+</div>
+
+<nav class="navbar">
+    <a href="index.html">TRANG CHỦ</a>
+    <a href="caccongtrinh.html">CÔNG TRÌNH ĐÃ THI CÔNG</a>
+    <a href="https://zalo.me/0828800234" target="_blank">LIÊN HỆ</a>
+</nav>
+
+<h1 class="hero-title">
+    TÔN VINH VẺ ĐẸP NGÔI NHÀ BẠN
+</h1>
+
+</section>
+
+<section class="about-wrapper">
+
+<div class="about-left">
+
+<div class="about-title">
+    VỀ CÔNG TY CHÚNG TÔI
+</div>
+
+<div class="about-box">
+
+<span class="highlight">Hồng Tuấn Hùng</span>
+là một công ty chuyên cung cấp các sản phẩm
+<span class="highlight">sơn chống thấm, trần Nano cao cấp và cửa gỗ vân thép Alux</span>
+tại Gio Linh, Quảng Trị và các khu vực lân cận.
+
+<br><br>
+
+Chúng tôi cam kết luôn đặt trách nhiệm trong từng sản phẩm,
+sự hài lòng của khách hàng chính là mục tiêu phát triển của công ty.
+
+<br><br>
+
+Quý khách hãy liên hệ chúng tôi để nhận được sự tư vấn nhiệt tình.
+
+</div>
+
+<div class="gallery">
+    <!-- Ô thứ nhất: Chèn ảnh sản phẩm 1 -->
+    <img src="PRODUCT IMAGES/HOME_BLOCK_1.jpg" alt="Ảnh minh họa công ty">
+    <!-- Ô thứ hai: Chèn ảnh sản phẩm 2 -->
+    <img src="PRODUCT IMAGES/HOME_BLOCK_2.png" alt="Ảnh minh họa công ty">
+</div>
+
+</div>
+
+<div class="sidebar">
+
+<div class="related">
+
+<h3 style="color: #d32f2f; font-size: 1.3rem; text-transform: uppercase; border-left: 4px solid #d32f2f; padding-left: 10px; margin-bottom: 20px; font-weight: bold;">
+    Bài viết liên quan
+</h3>
+
+<!-- Danh sách bài viết dưới dạng khối kèm ảnh -->
+<div style="display: flex; flex-direction: column; gap: 20px;">
+
+    <!-- Bài viết 1: Cửa gỗ vân thép ALUX -->
+    <div style="background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <a href="https://alux.com.vn/gioi-thieu-ve-cua-thep-van-go/?srsltid=AfmBOopEGu0vhbxU0cj4ac-F63r94gfo9Gto1jPEciVFbE-BJs3uiBDF" target="_blank" style="text-decoration: none; display: block;">
+            <div style="color: #1a73e8; font-weight: 600; font-size: 1.05rem; margin-bottom: 8px;" onmouseover="this.style.color='#0d47a1';" onmouseout="this.style.color='#1a73e8';">
+                ✦ Cửa gỗ vân thép ALUX Việt Nam là gì?
+            </div>
+            <!-- Hình ảnh minh họa cho bài viết 1 -->
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" 
+                 alt="Cửa gỗ vân thép ALUX" 
+                 style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 6px; display: block; margin-top: 5px;">
+        </a>
+    </div>
+
+    <!-- Bài viết 2: Trần Nano cao cấp -->
+    <div style="background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <a href="https://vansannhua.com/tran-nhua-nano/" target="_blank" style="text-decoration: none; display: block;">
+            <div style="color: #1a73e8; font-weight: 600; font-size: 1.05rem; margin-bottom: 8px;" onmouseover="this.style.color='#0d47a1';" onmouseout="this.style.color='#1a73e8';">
+                ✦ Tìm hiểu về Trần Nano cao cấp
+            </div>
+            <!-- Hình ảnh minh họa cho bài viết 2 -->
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" 
+                 alt="Trần Nano cao cấp" 
+                 style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 6px; display: block; margin-top: 5px;">
+        </a>
+    </div>
+
+</div>
+
+</div>
+
+
+<div class="contact-form">
+    <h3>LIÊN HỆ ĐẶT DỊCH VỤ</h3>
+    <input type="text" id="zalo_name" placeholder="Hãy nhập tên" required>
+    <input type="text" id="zalo_phone" placeholder="Hãy nhập số điện thoại" required>
+    <textarea id="zalo_msg" rows="6" placeholder="Hãy nhập câu hỏi"></textarea>
+    <button type="button" onclick="sendToZalo()">GỬI</button>
+</div>
+
+<!-- ========================================================= -->
+<!-- GIAO DIỆN HỘP THOẠI HƯỚNG DẪN HIỆN ĐẠI (MỚI THÊM) -->
+<div id="zaloModal" class="zalo-modal">
+    <div class="zalo-modal-content">
+        <div class="zalo-modal-icon">📋</div>
+        <h4>ĐÃ SAO CHÉP THÔNG TIN TỰ ĐỘNG!</h4>
+        <p>Ứng dụng Zalo đang được mở ở một tab mới.</p>
+        <p class="zalo-instruction">
+            Bạn chỉ cần bấm vào ô chat, nhấn tổ hợp phím <strong>Ctrl + V</strong> (hoặc đè tay chọn <strong>DÁN</strong> trên điện thoại) để gửi thông tin dịch vụ.
+        </p>
+        <button onclick="closeZaloModal()">Đã hiểu & Tiếp tục</button>
+    </div>
+</div>
+
+<!-- ========================================================= -->
+<!-- ĐOẠN CODE CSS CHO HỘP THOẠI THÔNG BÁO ĐẸP MẮT -->
+<style>
+.zalo-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 9999; 
+    left: 0; top: 0; 
+    width: 100%; height: 100%; 
+    background-color: rgba(0,0,0,0.5);
+    align-items: center; 
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+.zalo-modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: zoomIn 0.3s ease;
+}
+.zalo-modal-icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+.zalo-modal-content h4 {
+    color: #2e7d32;
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+.zalo-modal-content p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 5px 0;
+}
+.zalo-instruction {
+    background: #f5f5f5;
+    padding: 12px;
+    border-left: 4px solid #0068ff;
+    border-radius: 4px;
+    text-align: left;
+    margin-top: 15px !important;
+}
+.zalo-modal-content button {
+    background-color: #0068ff;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.2s;
+}
+.zalo-modal-content button:hover {
+    background-color: #0056d2;
+}
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+</style>
+
+<!-- ========================================================= -->
+<!-- ĐOẠN CODE JAVASCRIPT XỬ LÝ CHUYỂN TAB VÀ COPY -->
+<script>
+var globalZaloUrl = ""; // Biến toàn cục lưu link Zalo
+
+function sendToZalo() {
+    var name = document.getElementById('zalo_name').value.trim();
+    var phone = document.getElementById('zalo_phone').value.trim();
+    var msg = document.getElementById('zalo_msg').value.trim();
+    
+    if (!name || !phone) {
+        alert("Vui lòng nhập đầy đủ Họ tên và Số điện thoại!");
+        return;
+    }
+    
+    var textToCopy = "*KHÁCH HÀNG ĐẶT DỊCH VỤ*\n" +
+                     "- Họ tên: " + name + "\n" +
+                     "- SĐT khách: " + phone + "\n" +
+                     "- Nội dung: " + msg;
+    
+    var myZaloPhone = "0828800234";
+    globalZaloUrl = "https://zalo.me/" + myZaloPhone;
+    
+    // Tự động copy nội dung vào Clipboard
+    navigator.clipboard.writeText(textToCopy).then(function() {
+        // Hiện hộp thoại thông báo đẹp mắt thay cho lệnh alert cũ
+        document.getElementById("zaloModal").style.display = "flex";
+    }).catch(function(err) {
+        // Nếu trình duyệt lỗi không hỗ trợ copy, mở thẳng Zalo luôn
+        window.open(globalZaloUrl, '_blank');
+    });
+}
+
+// Hàm xử lý khi khách bấm nút "Đã hiểu & Tiếp tục" trên bảng thông báo
+function closeZaloModal() {
+    document.getElementById("zaloModal").style.display = "none";
+    // Mở ứng dụng Zalo ở một TAB MỚI, giữ khách ở lại trang web cũ
+    window.open(globalZaloUrl, '_blank');
+}
+</script>
+
+</section>
+
+<section class="products">
+
+<h2>CÁC DÒNG SẢN PHẨM KINH DOANH CỦA CÔNG TY</h2>
+
+<div class="product-grid">
+
+    <div class="product">
+        <img src="PRODUCT IMAGES/HOME_BLOCK_4.jpg" alt="Cửa gỗ vân thép Alux">
+        <h3>CỬA GỖ VÂN THÉP</h3>
+        <button class="btn-buy">LIÊN HỆ MUA HÀNG</button>
+    </div>
+
+    <div class="product">
+        <img src="PRODUCT IMAGES/HOME_BLOCK_5.jpg" alt="Sơn Nano 99 Plus">
+        <h3>SƠN NANO 99 PLUS</h3>
+        <button class="btn-buy">LIÊN HỆ MUA HÀNG</button>
+    </div>
+
+    <div class="product">
+        <img src="PRODUCT IMAGES/HOME_BLOCK_3.jpg" alt="Trần Nano cao cấp">
+        <h3>TRẦN NANO CAO CẤP</h3>
+        <button class="btn-buy">LIÊN HỆ MUA HÀNG</button>
+    </div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div class="footer-content">
+
+<div class="contact-info">
+
+<p>📞 SĐT liên hệ: 0828 800 234</p>
+
+<p>📍 Số 34, đường Phan Bội Châu, xã Gio Linh, tỉnh Quảng Trị</p>
+
+<p>
+    <a href="https://zalo.me/0828800234" target="_blank" style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; gap: 8px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" style="width: 20px; height: 20px; border-radius: 4px;">
+        <span>Công ty TNHH Hồng Tuấn Hùng</span>
+    </a>
+</p>
+
+<p>
+    <a href="https://web.facebook.com/profile.php?id=61578500792118" target="_blank" style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; gap: 8px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg" alt="Facebook" style="width: 20px; height: 20px;">
+        <span>Công ty TNHH Hồng Tuấn Hùng</span>
+    </a>
+</p>
+
+<div class="credit">
+ 
+    <p style="margin-top: 50px;">
+    <a href="https://zalo.me/0768555250" target="_blank" style="text-decoration: none; color: #555555; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 5px; transition: color 0.2s;" onmouseover="this.style.color='#0d47a1'; this.style.textDecoration='underline';" onmouseout="this.style.color='#555555'; this.style.textDecoration='none';">
+        ⭐ Thiết kế bởi @Phuong Electronic
+    </a>
+</p>
+
+</div>
+
+</div>
+
+<div class="map">
+
+<iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3813.0645607316335!2d107.07930427596005!3d16.930355389650454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3140e81edd7c8213%3A0xfdd7eec6dfdf766d!2s34%20Phan%20B%E1%BB%99i%20Ch%C3%A2u%2C%20Gio%20Linh%2C%20Qu%E1%BA%A3ng%20Tr%E1%BB%8B%2C%20Vietnam!5e0!3m2!1svi!2s!4v1717242400000!5m2!1svi!2s" 
+    width="100%" 
+    height="450" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+</div>
+
+</div>
+
+</footer>
+
+<div class="floating-icons">
+    <a href="https://web.facebook.com/profile.php?id=61578500792118" target="_blank" class="icon-pulse fb-button" title="Chat qua Facebook">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </a>
+    
+    <a href="https://zalo.me/0828800234" target="_blank" class="icon-pulse zalo-button" title="Chat qua Zalo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo">
+    </a>
+</div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var productButtons = document.querySelectorAll('.product .btn-buy');
+
+        productButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var productName = this.parentElement.querySelector('h3').innerText;
+
+                var textToCopy = "*KHÁCH HÀNG LIÊN HỆ MUA HÀNG*\n" +
+                                 "- Sản phẩm quan tâm: " + productName + "\n" +
+                                 "- Vui lòng tư vấn báo giá và chương trình ưu đãi.";
+
+                var myZaloPhone = "0768555250";
+                globalZaloUrl = "https://zalo.me/" + myZaloPhone;
+
+                navigator.clipboard.writeText(textToCopy).then(function() {
+                    document.getElementById("zaloModal").style.display = "flex";
+                }).catch(function(err) {
+                    window.open(globalZaloUrl, '_blank');
+                });
+            });
+        });
+    });
+    </script>
+</body>
+</html>

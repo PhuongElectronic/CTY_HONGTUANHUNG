@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CÔNG TRÌNH ĐÃ THI CÔNG - HỒNG TUẤN HÙNG</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#fcf9f9;
+}
+
+/* ================= HEADER ================= */
+.hero{
+    position:relative;
+    height:450px;
+    background:url("PRODUCT IMAGES/background.png") center center/cover no-repeat;
+}
+
+.hero-overlay{
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.25);
+}
+
+.logo-area{
+    position:absolute;
+    top:15px;
+    left:70px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    gap: 7px;
+}
+
+.logo{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #972222;     
+    border: 3px solid #fff;
+    overflow: hidden;        
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       
+}
+.company-name{
+    color:#e40f0fe1;
+    font-weight:bold;
+    margin-top:10px;
+    font-size:30px;
+}
+
+.navbar{
+    position:absolute;
+    top:70px;
+    right:20px;
+    background:#413e3e;
+    display:flex;
+}
+
+.navbar a{
+    color:#00ffff;
+    text-decoration:none;
+    padding:15px 20px;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    background:#c72a2a;
+}
+
+.hero-title{
+    position:absolute;
+    left:150px;
+    bottom:100px;
+    font-size:64px;
+    font-weight:bold;
+}
+
+/* ================= THÂN TRANG CÔNG TRÌNH (MỚI TÍCH HỢP) ================= */
+.main-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+.project-banner {
+    background: #bd6e6e; /* Màu đỏ đô sang trọng tương tự hình mẫu */
+    color: white;
+    text-align: center;
+    padding: 22px 15px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.project-banner h2 {
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.project-sub {
+    font-size: 30 px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cột hình ảnh chuẩn chỉnh */
+    gap: 30px; 
+    margin-bottom: 50px;
+}
+
+.gallery-card {
+    background: rgb(169, 199, 114);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px); /* Hiệu ứng nhấc nhẹ sang trọng khi trỏ chuột vào */
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 380px; /* Chiều cao cố định chuẩn để các ô không bị lệch hàng */
+    object-fit: cover; 
+    display: block;
+    background: #eee; /* Màu nền chờ khi chưa có ảnh */
+}
+
+.card-desc {
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    border-top: 1px solid #eee;
+}
+
+/* Khối cam kết dưới danh sách ảnh */
+.why-choose-us {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 2px dashed #ccc;
+}
+
+.why-choose-us h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-icon {
+    font-size: 35px;
+}
+
+.feature-item p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* ================= GIAO DIỆN HỘP THOẠI MODAL ================= */
+.zalo-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 9999; 
+    left: 0; top: 0; 
+    width: 100%; height: 100%; 
+    background-color: rgba(0,0,0,0.5);
+    align-items: center; 
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+.zalo-modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: zoomIn 0.3s ease;
+}
+.zalo-modal-icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+.zalo-modal-content h4 {
+    color: #2e7d32;
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+.zalo-modal-content p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 5px 0;
+}
+.zalo-instruction {
+    background: #f5f5f5;
+    padding: 12px;
+    border-left: 4px solid #0068ff;
+    border-radius: 4px;
+    text-align: left;
+    margin-top: 15px !important;
+}
+.zalo-modal-content button {
+    background-color: #0068ff;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.2s;
+}
+.zalo-modal-content button:hover {
+    background-color: #0056d2;
+}
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ================= FOOTER ================= */
+.footer{
+    background:#d6dbe1;
+    padding:50px 20px;
+}
+
+.footer-content{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.contact-info{
+    flex:1;
+}
+
+.contact-info p{
+    margin-bottom:25px;
+    font-size:24px;
+}
+
+.map{
+    flex:1;
+}
+
+.map iframe{
+    width:100%;
+    height:400px;
+    border:none;
+}
+
+.credit{
+    margin-top:40px;
+    font-size:22px;
+}
+
+/* ================= FLOAT ICONS FB VÀ ZALO ================= */
+.floating-icons {
+    position: fixed;
+    right: 20px;          /* Giữ nguyên khoảng cách lệch phải */
+    top: 50%;             /* Đẩy cạnh trên xuống chính giữa màn hình */
+    transform: translateY(-50%); /* Dịch chuyển cả khối lên trên 50% chiều cao của chính nó để căn giữa hoàn hảo */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 9999;
+}
+
+.floating-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+    background-color: #ffffff;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.floating-icons a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.floating-icons a:hover {
+    animation-play-state: paused; 
+    transform: scale(1.15) !important;
+}
+
+.fb-button {
+    box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.5);
+    animation: shakeEffect 0.8s infinite ease-in-out, fbGlow 1.8s infinite ease-in-out;
+}
+.zalo-button {
+    box-shadow: 0 0 0 0 rgba(0, 104, 224, 0.5);
+    animation: shakeEffect 0.8s infinite ease-in-out, zaloGlow 1.8s infinite ease-in-out;
+}
+
+@keyframes shakeEffect {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(0px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(2px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(2px, 2px) rotate(0deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes fbGlow {
+    0%, 100% { box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 0 0 0 rgba(26, 115, 232, 0.6); }
+    50% { box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 0 0 12px rgba(26, 115, 232, 0); }
+}
+@keyframes zaloGlow {
+    0%, 100% { box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 0 0 0 rgba(0, 104, 224, 0.6); }
+    50% { box-shadow: 0 4px 10px rgba(0,0,0,0.3), 0 0 0 12px rgba(0, 104, 224, 0); }
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media(max-width:900px){
+    .hero{
+        height:650px;
+    }
+    .hero-title{
+        font-size:34px;
+        left:20px;
+        right:20px;
+    }
+    .project-gallery {
+        grid-template-columns: 1fr; /* Thu về 1 cột dọc thẳng đứng trên điện thoại */
+        gap: 20px;
+    }
+    .gallery-card img {
+        height: 260px; /* Hạ bớt chiều cao ảnh trên mobile cho đỡ chiếm diện tích */
+    }
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr); /* Khối cam kết chia ô lưới 2x2 */
+    }
+    .project-banner h2 {
+        font-size: 22px;
+    }
+    .footer-content{
+        flex-direction:column;
+    }
+    .navbar{
+        flex-wrap:wrap;
+        position:static;
+    }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="hero-overlay"></div>
+    
+    <div class="logo-area">
+        <div class="logo">
+            <img src="PRODUCT IMAGES/LOGO.jpg" alt="Logo Hồng Tuấn Hùng">
+        </div>
+        <div class="company-name">HỒNG TUẤN HÙNG</div>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html">TRANG CHỦ</a>
+        <a href="caccongtrinh.html">CÔNG TRÌNH ĐÃ THI CÔNG</a>
+        <a href="https://zalo.me/0828800234" target="_blank">LIÊN HỆ</a>
+    </nav>
+
+    <h1 class="hero-title">TÔN VINH VẺ ĐẸP NGÔI NHÀ BẠN</h1>
+</section>
+
+<main class="main-content">
+    
+    <div class="project-banner">
+        <h2>HÌNH ẢNH CÁC CÔNG TRÌNH ĐÃ THỰC HIỆN</h2>
+        <p class="project-sub">UY TÍN - CHẤT LƯỢNG - TRÁCH NHIỆM</p>
+    </div>
+
+    <div class="project-gallery">
+        
+        <div class="gallery-card">
+            <img src="PRODUCT IMAGES/A1.jpg" alt="Công trình thực tế">
+            <div class="card-desc">Thi công cửa thép vân gỗ cửa chính</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="PRODUCT IMAGES/A2.jpg" alt="Công trình thực tế">
+            <div class="card-desc">Thi công cửa thép vân gỗ cửa chính</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="PRODUCT IMAGES/A3.jpg" alt="Công trình thực tế">
+            <div class="card-desc">Cửa sổ vân thép với khung gió đón nắng bằng kính cường lực cao cấp</i></div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="PRODUCT IMAGES/A4.jpg" alt="Công trình thực tế">
+            <div class="card-desc">Cửa sổ vân thép với song cửa chắc chắn</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="PRODUCT IMAGES/B1.jpg" alt="Công trình thực tế">
+            <div class="card-desc">Thi công trần Nano gian phòng thờ với đèn LED cao cấp,sang trọng</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="PRODUCT IMAGES/B2.jpg" alt="Công trình thực tế">
+            <div class="card-desc">Không gian phòng khách sang trọng cùng với nhiều chi tiết bắt mắt</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="PRODUCT IMAGES/B3.jpg" alt="Công trình thực tế">
+            <div class="card-desc">Ốp trần vân gỗ kết hợp với hệ tranh tường 3D ấn tượng</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="PRODUCT IMAGES/B4.jpg" alt="Công trình thực tế">
+            <div class="card-desc">Trần Nano cao cấp hòa vào không gian màu sang trọng của phòng khách</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="PRODUCT IMAGES/C1.jpg" alt="Công trình thực tế">
+            <div class="card-desc">Bàn giao nhà cho khách sau lắp đặt</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="PRODUCT IMAGES/C2.jpg" alt="Công trình thực tế">
+            <div class="card-desc">Đội ngũ công ty nhiệt tình, trách nhiệm trong công việc</div>
+        </div>
+
+    </div>
+
+    <div class="why-choose-us">
+        <h3>Tại sao chọn chúng tôi?</h3>
+        <div class="features-grid">
+            <div class="feature-item">
+                <span class="feature-icon">💎</span>
+                <p>Chất lượng kinh hàng đầu</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">👷</span>
+                <p>Đội ngũ thi công chuyên nghiệp</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🛡️</span>
+                <p>Bảo hành dài hạn</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">💰</span>
+                <p>Báo giá cạnh tranh</p>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<div id="zaloModal" class="zalo-modal">
+    <div class="zalo-modal-content">
+        <div class="zalo-modal-icon">📋</div>
+        <h4>ĐÃ SAO CHÉP THÔNG TIN TỰ ĐỘNG!</h4>
+        <p>Ứng dụng Zalo đang được mở ở một tab mới.</p>
+        <p class="zalo-instruction">
+            Bạn chỉ cần bấm vào ô chat, nhấn tổ hợp phím <strong>Ctrl + V</strong> (hoặc đè tay chọn <strong>DÁN</strong> trên điện thoại) để gửi thông tin dịch vụ.
+        </p>
+        <button onclick="closeZaloModal()">Đã hiểu & Tiếp tục</button>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="contact-info">
+            <p>📞 SĐT liên hệ: 0828 800 234</p>
+            <p>📍 Số 34, đường Phan Bội Châu, xã Gio Linh, tỉnh Quảng Trị</p>
+            <p>
+                <a href="https://zalo.me/0828800234" target="_blank" style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; gap: 8px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" style="width: 20px; height: 20px; border-radius: 4px;">
+                    <span>Công ty TNHH Hồng Tuấn Hùng</span>
+                </a>
+            </p>
+            <p>
+                <a href="https://web.facebook.com/profile.php?id=61578500792118" target="_blank" style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; gap: 8px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg" alt="Facebook" style="width: 20px; height: 20px;">
+                    <span>Công ty TNHH Hồng Tuấn Hùng</span>
+                </a>
+            </p>
+            <div class="credit">
+                <p style="margin-top: 50px;">
+                    <a href="https://zalo.me/0768555250" target="_blank" style="text-decoration: none; color: #555555; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 5px; transition: color 0.2s;" onmouseover="this.style.color='#0d47a1'; this.style.textDecoration='underline';" onmouseout="this.style.color='#555555'; this.style.textDecoration='none';">
+                        ⭐ Thiết kế bởi @Phuong Electronic
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="map">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3813.0645607316335!2d107.07930427596005!3d16.930355389650454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3140e81edd7c8213%3A0xfdd7eec6dfdf766d!2s34%20Phan%20B%E1%BB%99i%20Ch%C3%A2u%2C%20Gio%20Linh%2C%20Qu%E1%BA%A3ng%20Tr%E1%BB%8B%2C%20Vietnam!5e0!3m2!1svi!2s!4v1717242400000!5m2!1svi!2s" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</footer>
+
+<div class="floating-icons">
+    <a href="https://web.facebook.com/profile.php?id=61578500792118" target="_blank" class="icon-pulse fb-button" title="Chat qua Facebook">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </a>
+    
+    <a href="https://zalo.me/0828800234" target="_blank" class="icon-pulse zalo-button" title="Chat qua Zalo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo">
+    </a>
+</div>
+
+<script>
+var globalZaloUrl = "";
+function closeZaloModal() {
+    document.getElementById("zaloModal").style.display = "none";
+    window.open(globalZaloUrl, '_blank');
+}
+</script>
+
+</body>
+</html>
