@@ -779,21 +779,9 @@ function closeZaloModal() {
         });
     });
     </script>
-
-    
-Trò chuyện với Gemini
-điều chỉnh code HTML để khắc phục: khi vào Web PC thì thanh điều hướng ở góc phải phía trên đẹp, còn khi ở điện thoại thì thanh điều hướng bị trôi xuống dưới chèn các nội dung khác theo đoạn code tôi đã gửi
-
-Vấn đề bạn đang gặp phải là do sử dụng thuộc tính position: absolute cho .navbar trong CSS. Khi xem trên điện thoại, kích thước màn hình nhỏ hơn khiến các thành phần bị xô đẩy hoặc chồng chéo lên nhau.
-
-Để khắc phục tình trạng thanh điều hướng (navbar) bị trôi xuống và đè lên nội dung khác trên thiết bị di động, cách tốt nhất là sử dụng Media Queries để thay đổi cách hiển thị của thanh điều hướng tùy theo kích thước màn hình.
-
-Giải pháp kỹ thuật
-Bạn hãy giữ nguyên đoạn code hiện tại cho máy tính (PC) và thêm đoạn mã dưới đây vào cuối tệp CSS của bạn. Đoạn mã này sẽ chuyển thanh điều hướng sang dạng "stack" (xếp chồng) hoặc ẩn nó đi khi màn hình nhỏ (ví dụ dưới 768px - kích thước phổ biến cho máy tính bảng/điện thoại):
-
-CSS
 /* Dành cho màn hình nhỏ (Điện thoại) */
-@media (max-width: 768px) {
+<style>
+     @media (max-width: 768px) {
     .navbar {
         position: relative; /* Thay đổi từ absolute thành relative */
         top: 0;
@@ -808,6 +796,7 @@ CSS
         padding: 10px;
     }
 }
-    
+</style>
+   
 </body>
 </html>
