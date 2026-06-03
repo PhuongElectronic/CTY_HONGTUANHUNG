@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Trang chủ -->
   <url>
-    <loc>https://phuongelectronic.github.io/CTY_HONGTUANHUNG/</loc>
+    <loc>https://phuongelectronic.github.io/CTY_HONGTUANHUNG/index.html/</loc>
     <lastmod>2026-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -10,7 +10,7 @@
 
   <!-- Trang phụ abc.html (Bạn nhớ thay tên file nếu tên thực tế khác) -->
   <url>
-    <loc>https://phuongelectronic.github.io/CTY_HONGTUANHUNG/abc.html</loc>
+    <loc>https://https://phuongelectronic.github.io/CTY_HONGTUANHUNG/caccongtrinh.html</loc>
     <lastmod>2026-06-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
