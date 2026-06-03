@@ -420,6 +420,25 @@ body{
 }
 
 </style>
+/HIỆU CHỈNH CHO GIAO DIỆN ĐIỆN THOẠI
+    <style>
+     @media (max-width: 768px) {
+    .navbar {
+        position: relative; /* Thay đổi từ absolute thành relative */
+        top: 0;
+        right: 0;
+        flex-direction: column; /* Xếp các mục theo chiều dọc */
+        width: 100%;
+        background: #413e3e;
+    }
+
+    .navbar a {
+        text-align: center; /* Căn giữa chữ cho đẹp */
+        padding: 10px;
+    }
+}
+</style>
+    
 </head>
 <body>
 
@@ -779,24 +798,6 @@ function closeZaloModal() {
         });
     });
     </script>
-/* Dành cho màn hình nhỏ (Điện thoại) */
-<style>
-     @media (max-width: 768px) {
-    .navbar {
-        position: relative; /* Thay đổi từ absolute thành relative */
-        top: 0;
-        right: 0;
-        flex-direction: column; /* Xếp các mục theo chiều dọc */
-        width: 100%;
-        background: #413e3e;
-    }
-
-    .navbar a {
-        text-align: center; /* Căn giữa chữ cho đẹp */
-        padding: 10px;
-    }
-}
-</style>
    
 </body>
 </html>
