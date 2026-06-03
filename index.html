@@ -420,8 +420,9 @@ body{
 }
 
 </style>
-   <style>
-    /* Reset cơ bản để loại bỏ khoảng cách thừa */
+
+    <style>
+    /* Reset cơ bản */
     * {
         margin: 0;
         padding: 0;
@@ -431,27 +432,29 @@ body{
     /* Dành cho màn hình nhỏ (Điện thoại) */
     @media (max-width: 768px) {
         .navbar {
-            position: fixed; /* Ghim cứng thanh menu ở phía trên */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             display: flex;
-            flex-direction: column; /* Xếp các mục theo chiều dọc */
+            flex-direction: row; /* Chuyển thành hàng ngang */
+            justify-content: space-around; /* Chia đều khoảng cách các mục */
+            align-items: center; /* Căn giữa theo chiều dọc */
             background: #413e3e;
-            z-index: 1000; /* Đảm bảo menu nằm trên mọi nội dung khác */
+            z-index: 1000;
+            height: 50px; /* Cố định chiều cao để không quá dày */
         }
 
         .navbar a {
-            text-align: center;
-            padding: 15px; /* Tăng padding để dễ bấm trên điện thoại */
-            display: block;
+            padding: 10px 5px; /* Giảm padding để tiết kiệm không gian */
+            font-size: 14px;   /* Thu nhỏ cỡ chữ cho vừa hàng */
             color: white;
             text-decoration: none;
+            white-space: nowrap; /* Ngăn không cho chữ bị xuống dòng */
         }
         
-        /* Tạo khoảng cách trống phía dưới để nội dung trang không bị menu đè lên */
         body {
-            padding-top: 60px; /* Điều chỉnh giá trị này bằng chiều cao của navbar */
+            padding-top: 50px; /* Đồng bộ với chiều cao của navbar */
         }
     }
 </style>
